@@ -1,9 +1,8 @@
-import express from 'express';
-import router from './route/router.js';
-import mongoose from 'mongoose';
+const express = require('express');
+const router = require('./route/router.js')
+const mongoose = require('mongoose');
 const app = express();
-import dotenv from 'dotenv'
-dotenv.config()
+require('dotenv').config()
 const { MONGO_STRING, PORT } = process.env
 
 app.use(express.json())
