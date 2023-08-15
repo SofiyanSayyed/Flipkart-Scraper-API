@@ -41,17 +41,22 @@ const scrapeData = async (req, res) => {
 
         let description = $('div[class="_1mXcCf"] > p').text();
 
-        let reviewsAndRatings = $('div > div:nth-child(2) > div[class="col-12-12"] > span').text().replace(',', '') + " " + $('div > div:nth-child(3) > div[class="col-12-12"] > span').text().replace(',', '');
+        let reviewsAndRatings = $('div > div > span._2_R_DZ > span > span:nth-child(1)').text().replace(',', '') + "&" + $('div > div > span._2_R_DZ > span > span:nth-child(3)').text().replace(',', '');
 
-        if(reviewsAndRatings.trim() === ""){
+        if(reviewsAndRatings.trim() === "&"){
+          reviewsAndRatings = $("div > div._3Zuayz > div > div > span._2_R_DZ > span").text();
+        }
+        if(reviewsAndRatings === ""){
           reviewsAndRatings = "Error: Couldn't find reviews and ratings/(Location is different, can be resolved later.)";
         }
 
-        let ratings = $('div[class="col-12-12 _1azcI6"] > div._2d4LTz').text()
+        let ratings = $('div[class="gUuXy- _16VRIQ"] > span > div').text()
+        if(ratings === ""){
+          ratings = $('div[class="gUuXy- _16VRIQ _1eJXd3"] > span > div').text();
+        }
         if(ratings === ""){
           ratings = "Error: Couldn't find Ratings/(Location is different, can be resolved later.)";
         }
-
         let mediaCount = $('li._1Y_A6W').length;
 
     
