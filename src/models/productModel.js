@@ -22,9 +22,12 @@ const productSchema = new mongoose.Schema({
     },
     reviewsAndRatings: {
         type: String,
+        trim: true
     },
     ratings: {
         type: String,
+        trim: true
+
     },
     mediaCount: {
         type: String,
